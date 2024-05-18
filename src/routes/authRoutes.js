@@ -6,7 +6,7 @@ const validateEmail = require('../middleware/emailValidator');
 const authMiddleware = require('../middleware/authMiddleware')
 
 
-router.post('/', (req, res) => {
+router.get('/', (req, res) => {
   res.send("<h1>Backend of Huzaifa's Portfolio</h1>")
 })
 
