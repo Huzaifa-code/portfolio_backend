@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-router.get('/', (req, res) => {
+app.get('/', (req, res) => {
   res.send("<h1>Backend of Huzaifa's Portfolio</h1>")
 })
 
