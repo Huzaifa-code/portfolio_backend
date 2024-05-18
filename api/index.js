@@ -17,11 +17,15 @@ app.use(cors({
 app.use(cookieParser());
 
 
+
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
+router.get('/', (req, res) => {
+  res.send("<h1>Backend of Huzaifa's Portfolio</h1>")
+})
 
 app.use('/api/auth', authRoutes);
 
