@@ -6,6 +6,10 @@ const validateEmail = require('../middleware/emailValidator');
 const authMiddleware = require('../middleware/authMiddleware')
 
 
+router.post('/', (req, res) => {
+  res.send("<h1>Backend of Huzaifa's Portfolio</h1>")
+})
+
 // POST /signup - Route for user signup
 router.post('/signup',validateEmail ,authController.signup);
 
