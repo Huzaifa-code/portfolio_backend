@@ -1,6 +1,7 @@
 const express = require('express');
 const connectDB = require('../src/config/db')
 const authRoutes = require('../src/routes/authRoutes');
+const commentRoutes = require('../src/routes/commentRoutes');
 const bodyParser = require('body-parser');
 require('dotenv').config()
 const cors = require('cors');
@@ -28,6 +29,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/auth', authRoutes);
+app.use('/api', commentRoutes);
 
 
 const PORT = process.env.PORT || 5000; // Or any port of your choice

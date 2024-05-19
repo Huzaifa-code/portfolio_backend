@@ -1,8 +1,7 @@
 //?  Controllers for handling business logic
 //? Controller for authentication
-const User = require('../models/user');
+const User = require('../models/User');
 const bcrypt = require('bcrypt');
-const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 
 // Create Account
@@ -64,6 +63,7 @@ exports.login = async (req, res) => {
 
       // Fetch additional user data from MongoDB
       const userData = {
+        userId: user._id,
         username: user.username,
         email: user.email,
         profilePicture: user.profilePicture   // Assuming you have profile picture field in your schema
