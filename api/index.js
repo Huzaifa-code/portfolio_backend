@@ -9,11 +9,31 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 
+// Define allowed origins
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://www.developerhuzaifa.site',
+  'https://developerhuzaifa.site',
+  'https://huzaifa-qureshi-g7n25t9jf-huzaifacodes-projects.vercel.app',
+  // Add more origins as needed
+];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // Allow cookies with credentials
+};
+
 // Enable CORS
-app.use(cors({
-  origin: 'http://localhost:3000', // Replace with your frontend URL
-  credentials: true // Allow cookies with credentials
-}));
+app.use(cors(corsOptions));
+
 
 app.use(cookieParser());
 

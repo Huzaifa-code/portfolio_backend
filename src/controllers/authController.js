@@ -87,7 +87,7 @@ exports.login = async (req, res) => {
         sameSite: 'strict',
       });
       
-      res.status(200).json({ user: userData, token });
+      res.status(200).json({ user: userData });
 
     } catch (error) {
       console.error('Error logging in user:', error);
