@@ -3,7 +3,7 @@
 const jwt = require('jsonwebtoken');
 
 const authMiddleware = async (req, res, next) => {
-  const token = req.cookies.token; // Make sure the token is set in cookies
+  const token = req.cookies.token || req.headers.authorization?.split(' ')[1]; // Make sure the token is set in cookies
   if (!token) {
     return res.status(401).json({ message: 'Unauthorized, No token' });
   }
