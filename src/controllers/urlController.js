@@ -9,6 +9,14 @@ async function handleGenerateNewShortUrl(req, res){
     const body = req.body;
     if(!body.url)   return res.status(400).json({error: "URL is required"});
 
+    // Check if the URL already exists
+    const existingEntry = await URL.findOne({ redirectURL: body.url });
+    if (existingEntry) {
+        // If the URL already has a corresponding short URL, return it
+        return res.json({ shortUrl: `${baseUrl}url/${existingEntry.shortId}` });
+    }
+
+
     const shortID = shortid();
     await URL.create({
         shortId: shortID,
