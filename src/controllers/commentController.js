@@ -23,10 +23,10 @@ exports.addComment = async (req, res) => {
     await newComment.save();
 
     //! Populate userId before sending the response - find a way to do this 
-    // const populatedComment = await newComment.populate('userId').execPopulate();
+    const populatedComment = await newComment.populate('userId');
 
 
-    res.status(201).json(newComment);
+    res.status(201).json(populatedComment);
   } catch (err) {
     res.status(500).json({ error: 'Server error', err });
   }
