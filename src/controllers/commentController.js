@@ -12,11 +12,22 @@ exports.getCommentsByPostId = async (req, res) => {
 
 exports.addComment = async (req, res) => {
   const { postSlug, text, userId } = req.body;
+
+  if (!userId) {
+    return res.status(400).json({ error: 'User ID is required' });
+  }
+
+
   try {
     const newComment = new Comment({ postSlug, text, userId });
     await newComment.save();
-    res.status(201).json(newComment);
+
+    // Populate userId before sending the response
+    const populatedComment = await newComment.populate('userId').execPopulate();
+
+
+    res.status(201).json(populatedComment);
   } catch (err) {
-    res.status(500).json({ error: 'Server error' });
+    res.status(500).json({ error: 'Server error', err });
   }
 };

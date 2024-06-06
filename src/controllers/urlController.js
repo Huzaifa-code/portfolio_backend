@@ -16,7 +16,6 @@ async function handleGenerateNewShortUrl(req, res){
         return res.json({ shortUrl: `${baseUrl}url/${existingEntry.shortId}` });
     }
 
-
     const shortID = shortid();
     await URL.create({
         shortId: shortID,
