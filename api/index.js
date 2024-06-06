@@ -2,6 +2,7 @@ const express = require('express');
 const connectDB = require('../src/config/db')
 const authRoutes = require('../src/routes/authRoutes');
 const commentRoutes = require('../src/routes/commentRoutes');
+const urlRoute = require('../src/routes/urlRoutes')
 const bodyParser = require('body-parser');
 require('dotenv').config()
 const cors = require('cors');
@@ -33,10 +34,7 @@ const corsOptions = {
 
 // Enable CORS
 app.use(cors(corsOptions));
-
-
 app.use(cookieParser());
-
 
 
 // Body parser middleware
@@ -50,7 +48,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api', commentRoutes);
-
+app.use('/url', urlRoute);
 
 const PORT = process.env.PORT || 5000; // Or any port of your choice
 app.listen(PORT, () => {
