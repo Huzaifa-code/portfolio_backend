@@ -23,7 +23,7 @@ exports.addComment = async (req, res) => {
     await newComment.save();
 
     // Populate userId before sending the response
-    const populatedComment = await newComment.populate('userId').execPopulate();
+    // const populatedComment = await newComment.populate('userId').execPopulate();
 
 
     res.status(201).json(populatedComment);
