@@ -13,7 +13,7 @@ const app = express();
 // Define allowed origins
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://www.developerhuzaifa.site',
+  'https://www.developerhuzaifa.space',
   'https://developerhuzaifa.site',
   'https://huzaifa-qureshi-g7n25t9jf-huzaifacodes-projects.vercel.app',
   // Add more origins as needed
